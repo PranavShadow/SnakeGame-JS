@@ -25,7 +25,7 @@ let speed = 300;
 
 let intervalId = null;
 let timerIntervalId = null;
-let direction = 'left';
+let direction = 'right';
 let food = {x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols)};
 
 
