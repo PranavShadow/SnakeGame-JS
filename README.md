@@ -4,6 +4,9 @@ A classic Snake Game built using **HTML, CSS, and JavaScript**. Control the snak
 
 ## Preview
 
+<img width="1902" height="903" alt="image" src="https://github.com/user-attachments/assets/eb721ffc-13ad-4c8d-bbbb-f34c04532f30" />
+
+
 ## Technologies Used
 
 * HTML5
