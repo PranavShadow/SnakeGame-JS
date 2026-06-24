@@ -21,7 +21,7 @@ const rows = Math.floor(board.clientHeight / blockHeight);
 
 const blocks = [];
 let snake = [{ x: 1, y: 3 }];
-let speed = 100;
+let speed = 300;
 
 let intervalId = null;
 let timerIntervalId = null;
