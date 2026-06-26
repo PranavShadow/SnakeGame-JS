@@ -51,6 +51,25 @@ for (let row = 0; row < rows; row++) {
   }
 }
 
+const checkBodyCollision = () => {
+  const head = snake[0];
+  let collided = false;
+  snake.forEach((body, idx) => {
+    if (idx != 0) {
+      if (body.x == head.x && body.y == head.y) {
+        //Found Collision
+        clearInterval(intervalId);
+        modal.style.display = "flex";
+        startGameModal.style.display = "none";
+        gameOverModal.style.display = "flex";
+        collided = true;
+        return;
+      }
+    }
+  });
+  return collided;
+};
+
 function render() {
   let head = null;
   blocks[`${food.x}-${food.y}`].classList.add("food");
@@ -78,6 +97,7 @@ function render() {
   }
 
   //snake to wall collision logic
+  // Add snake to snake collision logic
   if (head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols) {
     clearInterval(intervalId);
     modal.style.display = "flex";
@@ -85,11 +105,15 @@ function render() {
     gameOverModal.style.display = "flex";
     return;
   }
+  if (checkBodyCollision()) {
+    return;
+  }
 
   //food consume logic
 
   snake.forEach((segment) => {
     blocks[`${segment.x}-${segment.y}`].classList.remove("fill");
+    blocks[`${segment.x}-${segment.y}`].classList.remove("head");
   });
 
   // Food consume logic
@@ -119,8 +143,12 @@ function render() {
   }
 
   // Draw updated snake
-  snake.forEach((segment) => {
-    blocks[`${segment.x}-${segment.y}`].classList.add("fill");
+  snake.forEach((segment, idx) => {
+    if (idx == 0) {
+      blocks[`${segment.x}-${segment.y}`].classList.add("head");
+    } else {
+      blocks[`${segment.x}-${segment.y}`].classList.add("fill");
+    }
   });
 }
 
@@ -159,6 +187,7 @@ function restartGame() {
   blocks[`${food.x}-${food.y}`].classList.remove("food");
   snake.forEach((segment) => {
     blocks[`${segment.x}-${segment.y}`].classList.remove("fill");
+    blocks[`${segment.x}-${segment.y}`].classList.remove("head");
   });
 
   modal.style.display = "none";
