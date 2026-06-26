@@ -15,6 +15,7 @@ html, body{
     --bg-fill-color: #fdfdfc;
     --bg-food-color: rgba(156, 43, 43, 0.541);
     --bg-modal-color : #3333334f;
+    --bg-head-color: #98fb98;
 
     /* Text Colors */
     --text-primary-color: #f0f0f0;
@@ -107,6 +108,10 @@ section .infos{
 
 .fill{
     background-color: var(--bg-fill-color);
+}
+
+.head {
+    background-color: var(--bg-head-color)
 }
 
 .food{
