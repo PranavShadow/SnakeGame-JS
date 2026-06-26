@@ -186,11 +186,24 @@ function restartGame() {
 }
 
 addEventListener("keydown", (e) => {
-  if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") direction = "up";
-  else if (e.key === "ArrowDown" || e.key === "s" || e.key === "S")
+  if (
+    (e.key === "ArrowUp" || e.key === "w" || e.key === "W") &&
+    direction != "down"
+  )
+    direction = "up";
+  else if (
+    (e.key === "ArrowDown" || e.key === "s" || e.key === "S") &&
+    direction != "up"
+  )
     direction = "down";
-  else if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A")
+  else if (
+    (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") &&
+    direction != "right"
+  )
     direction = "left";
-  else if (e.key === "ArrowRight" || e.key === "d" || e.key === "D")
+  else if (
+    (e.key === "ArrowRight" || e.key === "d" || e.key === "D") &&
+    direction != "left"
+  )
     direction = "right";
 });
